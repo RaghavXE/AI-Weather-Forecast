@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI Weather Forecast - Home</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+ 
+  <div id="transition-overlay"></div>
+  
+  
+  <header>
+    <nav class="navbar">
+      <div class="logo">AI <span>Weather</span></div>
+      <ul class="nav-links">
+         <li><a href="index.html" class="active">Home</a></li>
+         <li><a href="forecast.html">Forecast</a></li>
+         <li><a href="about.html">About</a></li>
+         <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Welcome to AI Weather Forecast</h1>
+      <p>Accurate, futuristic weather insights powered by artificial intelligence.</p>
+      <a href="forecast.html" class="btn">Explore Forecasts</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+     <p>&copy; 2025 AI Weather Forecast. All rights reserved.</p>
+  </footer>
+
+  <!-- Page Transition Script -->
+  <script>
+    // Wait for the page to load and then remove the overlay
+    document.addEventListener("DOMContentLoaded", () => {
+      const overlay = document.getElementById("transition-overlay");
+      overlay.classList.add("fade-out");
+    });
+    
+    // Attach click events to all internal links for fade-out effect
+    const links = document.querySelectorAll("a[href]");
+    links.forEach(link => {
+      // Only intercept local pages
+      if (link.href.includes(window.location.hostname)) {
+        link.addEventListener("click", e => {
+          e.preventDefault();
+          const target = e.currentTarget.href;
+          const overlay = document.getElementById("transition-overlay");
+          overlay.classList.remove("fade-out");
+          overlay.classList.add("fade-in");
+          setTimeout(() => {
+            window.location.href = target;
+          }, 600); // Adjust timeout to match animation duration
+        });
+      }
+    });
+  </script>
+</body>
+</html>

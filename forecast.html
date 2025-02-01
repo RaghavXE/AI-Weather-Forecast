@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI Weather Forecast - Forecast</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Transition Overlay -->
+  <div id="transition-overlay"></div>
+  
+  <!-- Header & Navigation -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">AI <span>Weather</span></div>
+      <ul class="nav-links">
+         <li><a href="index.html">Home</a></li>
+         <li><a href="forecast.html" class="active">Forecast</a></li>
+         <li><a href="about.html">About</a></li>
+         <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Forecast Section -->
+  <section class="forecast-section">
+    <div class="forecast-card">
+      <h3>Monday</h3>
+      <p>Temperature: 25°C</p>
+      <p>Humidity: 60%</p>
+      <p>Condition: Sunny</p>
+    </div>
+    <div class="forecast-card">
+      <h3>Tuesday</h3>
+      <p>Temperature: 22°C</p>
+      <p>Humidity: 65%</p>
+      <p>Condition: Partly Cloudy</p>
+    </div>
+    <div class="forecast-card">
+      <h3>Wednesday</h3>
+      <p>Temperature: 20°C</p>
+      <p>Humidity: 70%</p>
+      <p>Condition: Rainy</p>
+    </div>
+    <div class="forecast-card">
+      <h3>Thursday</h3>
+      <p>Temperature: 24°C</p>
+      <p>Humidity: 55%</p>
+      <p>Condition: Sunny</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+     <p>&copy; 2025 AI Weather Forecast. All rights reserved.</p>
+  </footer>
+
+  <!-- Page Transition Script (Same as index.html) -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const overlay = document.getElementById("transition-overlay");
+      overlay.classList.add("fade-out");
+    });
+    
+    const links = document.querySelectorAll("a[href]");
+    links.forEach(link => {
+      if (link.href.includes(window.location.hostname)) {
+        link.addEventListener("click", e => {
+          e.preventDefault();
+          const target = e.currentTarget.href;
+          const overlay = document.getElementById("transition-overlay");
+          overlay.classList.remove("fade-out");
+          overlay.classList.add("fade-in");
+          setTimeout(() => {
+            window.location.href = target;
+          }, 600);
+        });
+      }
+    });
+  </script>
+</body>
+</html>
